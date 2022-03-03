@@ -1,9 +1,10 @@
 {
   "name": "pg6301-innlevering-quiz-react",
   "version": "1.0.0",
-  "description": "Denne innleveringen er anbefalt, men ikke påkrevd for å ta eksamen (PG6301 har ingen obligatoriske øvelser)",
+  "description": "innlevering",
   "main": "index.js",
   "scripts": {
+    "start": "cd server && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
