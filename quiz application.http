@@ -1,1 +1,4 @@
 POST {{server}}//api/question
+
+###
+GET {{server}}/api/question
