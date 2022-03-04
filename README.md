@@ -1,5 +1,7 @@
 #Innlevering pg6301
 
+Heroku URL: https://pg6301-innlevering-quiz.herokuapp.com/
+
 Denne innleveringen er anbefalt, men ikke påkrevd for å ta eksamen (PG6301 har ingen obligatoriske øvelser)
 
 Dersom du gjør innleveringen vil du få verdifull input og kontroll opp mot eksamen. Innleveringen skal gjøres parvis. Det er tillatt og anbefalt at man samarbeider med andre par for å hjelpe hverandre.
