@@ -2,59 +2,75 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { isCorrectAnswer, randomQuestion } from "../server/questions";
 import { FrontPage } from "./components/FrontPage";
 
-function ShowQuestion({ question, onAnswer }) {
+function ShowQuestion({ question }) {
+  async function handleAnswer(answer) {
+    console.log("Answered " + answer);
+    const { id } = question;
+    const res = await fetch("quiz/answer", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ id, answer }),
+    });
+  }
+
   return (
-    <>
-      <h1>{question.question}</h1>
+    <div>
+      <h2>{question.question}</h2>
       {Object.keys(question.answers)
         .filter((a) => question.answers[a])
         .map((a) => (
-          <p key={a}>
-            <button onClick={() => onAnswer(a)}>{question.answers[a]}</button>
-          </p>
+          <div key={a}>
+            <button onClick={() => handleAnswer(a)}>
+              {question.answers[a]}
+            </button>
+          </div>
         ))}
-    </>
+    </div>
   );
 }
 
-function Quiz() {
-  const [question, setQuestion] = useState(randomQuestion());
-  const [answer, setAnswer] = useState();
+function QuestionComponent() {
+  const [question, setQuestion] = useState();
 
-  function handleRestart() {
-    setQuestion(randomQuestion());
-    setAnswer(undefined);
+  async function handleLoadQuestion() {
+    const res = await fetch("/quiz/random");
+    setQuestion(await res.json());
   }
 
-  if (answer) {
+  if (!question) {
     return (
-      <ShowAnswerStatus
-        question={question}
-        answer={answer}
-        onRestart={handleRestart}
-      />
+      <div>
+        <button onClick={handleLoadQuestion}>Load a new question</button>
+      </div>
     );
   }
 
-  return <ShowQuestion question={question} onAnswer={setAnswer} />;
+  return <ShowQuestion question={question} />;
 }
 
-function ShowAnswerStatus({ answer, onRestart, question }) {
+function QuizApp() {
+  const [score, setScore] = useState();
+
+  useEffect(async () => {
+    const res = await fetch("/quiz/score");
+    setScore(await res.json());
+  }, []);
+
   return (
     <>
-      <h1>{isCorrectAnswer(question, answer) ? "Right" : "Wrong"}</h1>
-      <p>
-        <button onClick={onRestart}>Another question</button>
-      </p>
+      <h1>Welcome to the quiz show</h1>
+      {score && (
+        <div>
+          You have answered {score.correct} out of {score.answered} correct
+        </div>
+      )}
+      <QuestionComponent />
     </>
   );
-}
-
-function ShowResult() {
-  return <h1>Your score</h1>;
 }
 
 function Application() {
@@ -62,8 +78,7 @@ function Application() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<FrontPage />} />
-        <Route path={"/newQuestion"} element={<Quiz />} />
-        <Route path={"/result"} element={<ShowResult />} />
+        <Route path={"/newQuestion"} element={<QuizApp />} />
         <Route path="/*" element={<h1>Not found</h1>} />
       </Routes>
     </BrowserRouter>
