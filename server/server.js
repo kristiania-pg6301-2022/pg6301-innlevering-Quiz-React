@@ -2,17 +2,19 @@ import express from "express";
 import * as path from "path";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import bodyParser from "body-parser";
 
 dotenv.config();
 
 import { isCorrectAnswer, Questions, randomQuestion } from "./questions.js";
 
 const app = express();
-app.use(cookieParser(process.env.COOKIE_PARSER));
+app.use(bodyParser.json());
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.get("/quiz/score", (req, res) => {
   const score = req.signedCookies.score
-    ? JSON.stringify(req.signedCookies.score)
+    ? JSON.parse(req.signedCookies.score)
     : {
         answered: 0,
         correct: 0,
