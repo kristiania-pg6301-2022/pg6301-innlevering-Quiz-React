@@ -1,4 +1,4 @@
-POST {{server}}//api/question
+POST {{server}}/quiz/answer
 
 ###
 GET {{server}}/api/question
