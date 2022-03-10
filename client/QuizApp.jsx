@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { fetchJSON, postJSON } from "./http";
 import { useLoader } from "./useLoader";
+import { Link } from "react-router-dom";
 
 function ShowQuestion({ question, onReload }) {
   async function handleAnswer(answer) {
-    console.log("Answered " + answer);
+    console.log(answer);
     const { id } = question;
-
-    const res = await fetch("quiz/answer", {
-      method: "post",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ id, answer }),
-    });
+    postJSON("/quiz/answer", { id, answer });
     onReload();
   }
-
   return (
     <div>
       <h2>{question.question}</h2>
@@ -54,28 +47,34 @@ function QuestionComponent({ reload }) {
     );
   }
 
-  return <ShowQuestion question={question} onReload={handleReload()} />;
+  return <ShowQuestion question={question} onReload={handleReload} />;
 }
 
 export function QuizApp() {
-  const [score, setScore] = useState();
-
-  useEffect(reload, []);
-
-  async function reload() {
-    const res = await fetch("quiz/score");
-    setScore(await res.json());
-  }
+  const {
+    data: score,
+    loading,
+    reload,
+  } = useLoader(async () => fetchJSON("/quiz/score"));
 
   return (
     <>
       <h1>Welcome to the quiz show</h1>
+      {loading && <div>Loading...</div>}
       {score && (
         <div>
-          You have answered {score.correct} out of {score.answered} correct
+          you have answered {score.correct} correct out of {score.answered}{" "}
+          questions
         </div>
       )}
-      <QuestionComponent reload={reload} />
+      <div>
+        <QuestionComponent reload={reload} />
+      </div>
+      <div>
+        <Link to="/">
+          <button>Back home</button>
+        </Link>
+      </div>
     </>
   );
 }

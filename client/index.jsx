@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { FrontPage } from "./components/FrontPage";
 import { QuizApp } from "./QuizApp";
+import { Score } from "./score";
 
 function Application() {
   return (
@@ -10,6 +11,7 @@ function Application() {
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path={"/newQuestion"} element={<QuizApp />} />
+        <Route path={"/result"} element={<Score />} />
         <Route path="/*" element={<h1>Not found</h1>} />
       </Routes>
     </BrowserRouter>

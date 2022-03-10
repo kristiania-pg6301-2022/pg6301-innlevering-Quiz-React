@@ -1,12 +1,11 @@
 import express from "express";
-import * as path from "path";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import * as path from "path";
 import bodyParser from "body-parser";
+import { isCorrectAnswer, Questions, randomQuestion } from "./questions.js";
 
 dotenv.config();
-
-import { isCorrectAnswer, Questions, randomQuestion } from "./questions.js";
 
 const app = express();
 app.use(bodyParser.json());
