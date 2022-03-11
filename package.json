@@ -10,7 +10,7 @@
     "format": "prettier --write **/*.{js,jsx,ts,tsx}",
     "format:check": "prettier --check **/*.{js,jsx,ts,tsx}",
     "test": "cd client && npm run build && npm run test",
-    "verify": "cd client && npm run Coverage",
+    "verify": "cd client && npm run build && npm ci && npm run test -- --collectCoverage",
     "prepare": "husky install",
     "build": "npm run build:server && npm run build:client",
     "build:client": "cd client && npm run build",
