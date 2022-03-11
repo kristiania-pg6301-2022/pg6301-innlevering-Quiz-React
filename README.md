@@ -31,4 +31,4 @@ Få Heroku til å publisere websidene
 Express-serveren skal ha følgende API:
 
 GET /api/question - returnerer et tilfeldig spørsmål med { id, category, question, answers }
-POST /api/question - tar inn { id, answer } og returnerer "true" eller "false"
+POST /api/question -- tar inn { id, answer } og returnerer "true" eller "false"
