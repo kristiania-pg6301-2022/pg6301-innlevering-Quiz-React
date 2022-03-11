@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Application shows application list  1`] = `"<div><div><h1>Welcome to Quiz</h1><h3>Choice</h3></div><div><a href=\\"/newQuestion\\"><button>Take quiz</button></a><a href=\\"/result\\"><button>Show result</button></a></div></div>"`;
+
+exports[`FrontPage shows FrontPage 1`] = `"<div><div><h1>Welcome to Quiz</h1><h3>Choice</h3></div><div><a href=\\"/newQuestion\\"><button>Take quiz</button></a><a href=\\"/result\\"><button>Show result</button></a></div></div>"`;

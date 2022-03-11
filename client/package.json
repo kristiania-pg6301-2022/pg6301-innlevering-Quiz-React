@@ -24,7 +24,10 @@
     "react-router-dom": "^6.2.2"
   },
   "jest": {
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "collectCoverageFrom": [
+      "*.jsx"
+    ]
   },
   "babel": {
     "presets": [

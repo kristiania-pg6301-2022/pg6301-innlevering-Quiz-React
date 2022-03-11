@@ -9,7 +9,8 @@
     "dev:server": "cd server && npm run dev",
     "format": "prettier --write **/*.{js,jsx,ts,tsx}",
     "format:check": "prettier --check **/*.{js,jsx,ts,tsx}",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cd client && npm run build && npm run test",
+    "verify": "cd client && npm run build && npm ci && npm run test -- --collectCoverage",
     "prepare": "husky install",
     "build": "npm run build:server && npm run build:client",
     "build:client": "cd client && npm run build",
@@ -28,8 +29,10 @@
   },
   "homepage": "https://github.com/kristiania-pg6301-2022/pg6301-innlevering-Quiz-React#readme",
   "devDependencies": {
+    "babel-jest": "^27.5.1",
     "concurrently": "^7.0.0",
     "husky": "^7.0.4",
+    "jest": "^27.5.1",
     "prettier": "^2.5.1"
   },
   "engines": {
