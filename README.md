@@ -1,3 +1,6 @@
+[![Run tests](https://github.com/kristiania-pg6301-2022/pg6301-innlevering-Quiz-React/actions/workflows/test.yml/badge.svg?branch=klient-server)](https://github.com/kristiania-pg6301-2022/pg6301-innlevering-Quiz-React/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/kristiania-pg6301-2022/pg6301-innlevering-Quiz-React/badge.svg?branch=klient-server)](https://coveralls.io/github/kristiania-pg6301-2022/pg6301-innlevering-Quiz-React?branch=klient-server)
+
 #Innlevering pg6301
 
 Heroku URL: https://pg6301-innlevering-quiz.herokuapp.com/
