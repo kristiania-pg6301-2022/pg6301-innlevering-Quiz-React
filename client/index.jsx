@@ -1,21 +1,4 @@
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import { FrontPage } from "./components/FrontPage";
-import { QuizApp } from "./QuizApp";
-import { Score } from "./score";
-
-function Application() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<FrontPage />} />
-        <Route path={"/newQuestion"} element={<QuizApp />} />
-        <Route path={"/result"} element={<Score />} />
-        <Route path="/*" element={<h1>Not found</h1>} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
+import { Application } from "./application";
 
 ReactDOM.render(<Application />, document.getElementById("app"));
