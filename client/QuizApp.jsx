@@ -3,7 +3,7 @@ import { fetchJSON, postJSON } from "./http";
 import { useLoader } from "./useLoader";
 import { Link } from "react-router-dom";
 
-function ShowQuestion({ question, onReload }) {
+export function ShowQuestion({ question, onReload }) {
   async function handleAnswer(answer) {
     console.log(answer);
     const { id } = question;
