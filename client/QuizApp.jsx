@@ -26,7 +26,7 @@ export function ShowQuestion({ question, onReload }) {
   );
 }
 
-function QuestionComponent({ reload }) {
+export function QuestionComponent({ reload }) {
   const [question, setQuestion] = useState();
 
   async function handleLoadQuestion() {

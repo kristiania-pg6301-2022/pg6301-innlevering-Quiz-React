@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { ShowQuestion } from "../QuizApp";
 import { MemoryRouter } from "react-router-dom";
-import { act } from "react-dom/test-utils";
+import { act, Simulate } from "react-dom/test-utils";
 
 describe("quiz", () => {
   it("show questions", async () => {
@@ -30,6 +30,22 @@ describe("quiz", () => {
         element
       );
     });
+    expect(element.innerHTML).toMatchSnapshot();
+  });
+});
+
+import { QuestionComponent } from "../QuizApp";
+import { useLoader } from "../useLoader";
+
+describe("QuestionComponent", () => {
+  it("if no question", () => {
+    const element = document.createElement("div");
+    ReactDOM.render(
+      <MemoryRouter>
+        <QuestionComponent />
+      </MemoryRouter>,
+      element
+    );
     expect(element.innerHTML).toMatchSnapshot();
   });
 });
