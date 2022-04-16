@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuestionComponent if no question 1`] = `"<div><button>Load a new question</button></div>"`;
+
+exports[`quiz show questions 1`] = `"<div><h2>What is the correct syntax for referring to an external script called \\"xxx.js\\"?</h2><div><button>&lt;script name=\\"xxx.js\\"&gt;</button></div><div><button>&lt;script src=\\"xxx.js\\"&gt;</button></div><div><button>&lt;script href=\\"xxx.js\\"&gt;</button></div><div><button>&lt;script declare=\\"xxx.js\\"&gt;</button></div></div>"`;
